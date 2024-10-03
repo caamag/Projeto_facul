@@ -8,7 +8,7 @@ const SignIn: React.FC<SignInProps> = ({ setSignIn }) => {
     return (
         <Css.SignInContainer>
             <h1>Bem-vindo de volta!</h1>
-            <p>Bem-vindo de volta! Acesse com os seus dados:</p><br /><br /><br /><br />
+            <p>Bem-vindo de volta! Acesse com os seus dados:</p><br /><br />
 
             <label>
                 Email: <br />
@@ -16,7 +16,7 @@ const SignIn: React.FC<SignInProps> = ({ setSignIn }) => {
                     type="email"
                     placeholder='Insira o seu e-mail:'
                 />
-            </label><br /><br /><br />
+            </label>
 
             <label>
                 Senha: <br />

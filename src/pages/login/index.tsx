@@ -13,8 +13,7 @@ const LoginPage = () => {
             </Css.Login>
 
             <Css.LoginDesign>
-                <Css.DesignCircle></Css.DesignCircle>
-                <Css.DesignBlock></Css.DesignBlock>
+
             </Css.LoginDesign>
         </Css.Logincontainer>
     )
