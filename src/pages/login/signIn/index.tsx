@@ -15,14 +15,16 @@ const SignIn: React.FC<SignInProps> = ({ setSignIn }) => {
                 <input
                     type="email"
                     placeholder='Insira o seu e-mail:'
+                    required
                 />
-            </label>
+            </label><br />
 
             <label>
                 Senha: <br />
                 <input
                     type="password"
                     placeholder='Informe a sua senha:'
+                    required
                 />
             </label><br />
 
