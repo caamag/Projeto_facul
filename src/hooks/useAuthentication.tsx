@@ -1,17 +1,20 @@
 
-import { db } from '../firebase/config';
 import { useState, useEffect } from 'react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile,
-    signOut
+    signOut,
 } from 'firebase/auth'
 
+interface UserProps {
+    email: string;
+    pass: string
+}
+
 export const useAuthentication = () => {
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(null);
+    const [error, setError] = useState<string | null | boolean>(null);
+    const [loading, setLoading] = useState<boolean | null>(null);
 
     //cleanup
     const [cancelled, setCancelled] = useState(false)
@@ -19,7 +22,7 @@ export const useAuthentication = () => {
 
     function checkIsCancelled() { if (cancelled) return }
 
-    const createUser = async (data) => {
+    const createUser = async (data: UserProps) => {
         checkIsCancelled();
         setLoading(true);
 
@@ -31,7 +34,7 @@ export const useAuthentication = () => {
             )
 
             return user;
-        } catch (error) {
+        } catch (error: any) {
             console.log(error.message);
             console.log(typeof error.message);
 
@@ -55,14 +58,14 @@ export const useAuthentication = () => {
         signOut(auth);
     }
 
-    const login = async (data) => {
+    const login = async (data: UserProps) => {
         checkIsCancelled()
         setLoading(true)
         setError(false)
 
         try {
             await signInWithEmailAndPassword(auth, data.email, data.pass);
-        } catch (error) {
+        } catch (error: any) {
             let systemError = ''
             if (error.message.includes("auth/invalid-credential")) {
                 systemError = 'Credenciais inválidas'
