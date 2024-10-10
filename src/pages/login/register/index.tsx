@@ -1,7 +1,8 @@
 import * as Css from './style';
 import React, { useState } from 'react';
 import { useAuthentication } from '../../../hooks/useAuthentication';
-//import { auth } from '../../../firebase/config';
+import LoadingIcon from '../../../assets/loading-icon.jpg'
+import ResponseMessage from '../../../components/reponseMessage';
 interface ReigisterProps {
     setSignIn: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -15,9 +16,7 @@ const Register: React.FC<ReigisterProps> = ({ setSignIn }) => {
 
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
-
-    const { createUser } = useAuthentication();
-    //const { error } = useAuthentication();
+    const { createUser, loading, error } = useAuthentication();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -27,12 +26,12 @@ const Register: React.FC<ReigisterProps> = ({ setSignIn }) => {
             pass
         }
 
-        const res = await createUser(user);
-        console.log(res);
+        await createUser(user);
     }
 
     return (
         <Css.RegisterContainer>
+            {error && <ResponseMessage status='error' message={error} />}
             <h1>Crie a sua conta!</h1>
             <p>Registre-se para ter acesso ao nosso conteúdo.</p><br /><br />
 
@@ -58,7 +57,12 @@ const Register: React.FC<ReigisterProps> = ({ setSignIn }) => {
                         onChange={(e) => { setPass(e.target.value) }}
                     />
                 </label><br />
-                <button type='submit'>Cadastrar</button>
+
+                {loading && <Css.LoaderContainer>
+                    <Css.Loader src={LoadingIcon} />
+                </Css.LoaderContainer>}
+
+                {!loading && <button type='submit'>Cadastrar</button>}
             </form>
 
             <Css.SignIn>

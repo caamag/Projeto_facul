@@ -32,20 +32,21 @@ export const useAuthentication = () => {
             )
 
             return user;
-        } catch (error: any) {
-            console.log(error.message);
-            console.log(typeof error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.log(error.message);
+                console.log(typeof error.message);
 
-            let systemError = ''
-            if (error.message.includes("Passwords")) {
-                systemError = 'A senha precisa ter pelo menos seis caracteres'
-            } else if (error.message.includes("email-already")) {
-                systemError = 'Email já cadastrado'
-            } else {
-                systemError = 'Ocorreu um erro! tente novamente mais tarde.'
+                let systemError = ''
+                if (error.message.includes("Passwords")) {
+                    systemError = 'A senha precisa ter pelo menos seis caracteres'
+                } else if (error.message.includes("email-already")) {
+                    systemError = 'Email já cadastrado'
+                } else {
+                    systemError = 'Ocorreu um erro! tente novamente mais tarde.'
+                }
+                setError(systemError);
             }
-
-            setError(systemError);
         } finally {
             setLoading(false);
         }
@@ -63,12 +64,14 @@ export const useAuthentication = () => {
 
         try {
             await signInWithEmailAndPassword(auth, data.email, data.pass);
-        } catch (error: any) {
+        } catch (error: unknown) {
             let systemError = ''
-            if (error.message.includes("auth/invalid-credential")) {
-                systemError = 'Credenciais inválidas'
-            } else {
-                systemError = 'Ocorreu um erro! tente novamente mais tarde.'
+            if (error instanceof Error) {
+                if (error.message.includes("auth/invalid-credential")) {
+                    systemError = 'Credenciais inválidas'
+                } else {
+                    systemError = 'Ocorreu um erro! tente novamente mais tarde.'
+                }
             }
             setError(systemError);
         } finally {
