@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyle from "./global/GlobalStyle";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { useState, useEffect } from "react";
-import { AuthProvider } from "./context/authContext";
+import { AuthProvider } from "./context/AuthContext";
 import { auth } from './firebase/config'
 
 //pages
@@ -11,11 +11,13 @@ import LoginPage from "./pages/login";
 
 const App = () => {
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState<User | null>();
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            setUser(user);
+            if (user) {
+                setUser(user);
+            }
         })
     }, []);
 
