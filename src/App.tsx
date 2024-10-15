@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import GlobalStyle from "./global/GlobalStyle";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { useState, useEffect } from "react";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/authContext";
 import { auth } from './firebase/config'
 
 //pages
@@ -20,11 +20,6 @@ const App = () => {
             }
         })
     }, []);
-
-    const loadingUser = user === undefined;
-    if (loadingUser) {
-        return <p>carregando...</p>
-    }
 
     return (
         <AuthProvider value={{ user }}>
