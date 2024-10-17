@@ -8,6 +8,7 @@ import { auth } from './firebase/config'
 //pages
 import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
+import NavBar from "./components/navBar";
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
         <AuthProvider value={{ user }}>
             <GlobalStyle />
             <BrowserRouter>
+                {user && <NavBar />}
                 <Routes>
                     <Route path="/" element={user ? <HomePage /> : <Navigate to={'/login'} />} />
                     <Route path="/login" element={!user ? <LoginPage /> : <Navigate to={'/'} />} />
