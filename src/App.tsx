@@ -7,6 +7,7 @@ import { auth } from './firebase/config'
 
 //pages
 import HomePage from "./pages/home";
+import Create from "./pages/create";
 import LoginPage from "./pages/login";
 import NavBar from "./components/navBar";
 
@@ -30,6 +31,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={user ? <HomePage /> : <Navigate to={'/login'} />} />
                     <Route path="/login" element={!user ? <LoginPage /> : <Navigate to={'/'} />} />
+                    <Route path="/create/new" element={user ? <Create /> : <Navigate to={'/login'} />} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

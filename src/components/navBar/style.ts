@@ -9,7 +9,6 @@ export const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border-bottom: 1px solid rgb(40,40,40);
 
     a{
         font-size: 18px;
