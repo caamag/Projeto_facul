@@ -2,7 +2,7 @@ import * as Css from './style';
 
 interface ResponseMessageProps {
     status: 'alert' | 'error' | 'success';
-    message: string | boolean;
+    message: string;
 }
 
 const ResponseMessage: React.FC<ResponseMessageProps> = ({ status, message }) => {
