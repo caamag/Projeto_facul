@@ -11,6 +11,8 @@ const Create = () => {
     const [method, setMethod] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<boolean>(false)
+    const [success, setSuccess] = useState<boolean>(false)
+    const [image, setImage] = useState<string>('')
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -21,12 +23,16 @@ const Create = () => {
                 title,
                 ingredient,
                 method,
+                image,
                 createdAt: serverTimestamp()
             })
 
             setTitle('')
             setIngredient('')
             setMethod('')
+
+            setSuccess(true)
+            setTimeout(() => { setSuccess(false) }, 5000)
 
         } catch (error) {
             setError(true)
@@ -44,6 +50,11 @@ const Create = () => {
                 message='Erro ao criar receita. Tente novamente mais tarde.'
             />}
 
+            {success && <ResponseMessage
+                status='success'
+                message='Receita criada com sucesso'
+            />}
+
             <h1>Nos envie a sua própria receita</h1>
             <h2>
                 Ela será avaliada por um especialista e então
@@ -57,6 +68,13 @@ const Create = () => {
                     value={title}
                     onChange={(e) => { setTitle(e.target.value) }}
                     required
+                />
+
+                <input
+                    type="text"
+                    placeholder='Url da imagem de exemplo da receita:'
+                    value={image}
+                    onChange={(e) => { setImage(e.target.value) }}
                 />
 
                 <textarea
