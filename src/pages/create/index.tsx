@@ -30,6 +30,7 @@ const Create = () => {
             setTitle('')
             setIngredient('')
             setMethod('')
+            setImage('')
 
             setSuccess(true)
             setTimeout(() => { setSuccess(false) }, 5000)

@@ -5,11 +5,16 @@ export const CreateContainer = styled.div`
 
     h1{
         text-align: center;
+        font-weight: 400;
+        font-size: 30px;
+        margin-top: 40px;
+        color: #3e77b6;
     }
 
     h2{
         text-align: center;
         font-weight: 400;
+        color: #3e77b6;
     }
 `
 

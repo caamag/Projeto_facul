@@ -12,14 +12,14 @@ export const NavContainer = styled.nav`
 
     a{
         font-size: 18px;
-        color: black;
+        color: #3e77b6;
         text-decoration: none;
         padding: 10px;
         transition: 250ms;
     }
 
     .active {
-        background-color: rgb(40,40,40);
+        background-color: #3e77b6;
         color: white;
     }
 
@@ -27,11 +27,12 @@ export const NavContainer = styled.nav`
         background-color: white;
         padding: 10px 25px;
         font-size: 18px;
-        border: solid 1px rgb(40,40,40);
+        border: solid 1px #3e77b6;
         transition: 150ms;
+        color: #3e77b6;
 
         &:hover{
-            background-color: rgb(40,40,40);
+            background-color: #3e77b6;
             color: white;
         }
     }

@@ -11,7 +11,7 @@ const borderColor: Record<ResponseContainerProps['status'], string> = {
 };
 
 export const ResponseContainer = styled.div<ResponseContainerProps>`
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 0px;
     right: 0px;
