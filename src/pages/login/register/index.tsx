@@ -31,7 +31,7 @@ const Register: React.FC<ReigisterProps> = ({ setSignIn }) => {
 
     return (
         <Css.RegisterContainer>
-            {error && <ResponseMessage status='error' message={error} />}
+            {error && <ResponseMessage status='error' message={'Erro ao prosseguir'} />}
             <h1>Crie a sua conta!</h1>
             <p>Registre-se para ter acesso ao nosso conteúdo.</p><br /><br />
 

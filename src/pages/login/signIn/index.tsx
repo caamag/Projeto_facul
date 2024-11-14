@@ -33,7 +33,7 @@ const SignIn: React.FC<SignInProps> = ({ setSignIn }) => {
 
     return (
         <Css.SignInContainer>
-            {error && <ResponseMessage status='error' message={error} />}
+            {error && <ResponseMessage status='error' message={'Erro ao prosseguir.'} />}
             <h1>Bem-vindo de volta!</h1>
             <p>Bem-vindo de volta! Acesse com os seus dados:</p><br /><br />
 
