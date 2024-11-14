@@ -1,6 +1,6 @@
-export type Revenue = {
-    title: string;
+export type RevenueProps = {
+    image: string;
     ingredient: string;
     method: string;
-    createdAt: any;
+    title: string;
 }
