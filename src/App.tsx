@@ -10,7 +10,6 @@ import HomePage from "./pages/home";
 import Create from "./pages/create";
 import LoginPage from "./pages/login";
 import NavBar from "./components/navBar";
-import Footer from "./components/footer";
 
 const App = () => {
 
@@ -34,7 +33,6 @@ const App = () => {
                     <Route path="/login" element={!user ? <LoginPage /> : <Navigate to={'/'} />} />
                     <Route path="/create/new" element={user ? <Create /> : <Navigate to={'/login'} />} />
                 </Routes>
-                {user && <Footer />}
             </BrowserRouter>
         </AuthProvider>
     )
