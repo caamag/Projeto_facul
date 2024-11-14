@@ -14,9 +14,7 @@ const LoginPage = () => {
                 {!signIn && <Register setSignIn={setSignIn} />}
             </Css.Login>
 
-            <Css.LoginDesign>
-
-            </Css.LoginDesign>
+            <Css.LoginDesign></Css.LoginDesign>
         </Css.Logincontainer>
     )
 }

@@ -4,6 +4,13 @@ export const RegisterContainer = styled.div`
     width: 50%;
     height: 400px;
 
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     background-color: white;
 
     h1{

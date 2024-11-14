@@ -15,6 +15,10 @@ export const LoginDesign = styled.div`
     background-color: #3e77b6;
     display: flex;
     align-items: end;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 `
 
 export const Login = styled.div`
@@ -24,6 +28,10 @@ export const Login = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
 
     label{
         font-size: 14px;
